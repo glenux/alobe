@@ -1,0 +1,360 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html lang="fr-fr">
+<head>
+  <meta content="text/html;charset=ISO-8859-1" http-equiv="Content-Type">
+  <link rel="stylesheet" type="text/css" href="index.css">
+  <title>Alob&eacute;</title>
+  <meta content="Glenn ROLLAND" name="author">
+</head>
+<body style="direction: ltr;">
+<div style="text-align: justify;" class="page">
+<h1>Alob&eacute; (TP2)</h1>
+<h2><a name="1._Description"></a>1.
+<a name="Description"></a>Description</h2>
+<p>Alob&eacute; est
+un&nbsp;logiciel libre permettant de manipuler de grands graphes
+non-orient&eacute;s d&eacute;crits par la liste de leurs
+arr&ecirc;tes. Il poss&egrave;de les
+caract&eacute;ristiques
+suivantes :</p>
+<ul>
+  <li>Il est distribu&eacute;
+sous la licence&nbsp;<a href="http://www.gnu.org/copyleft/gpl.html">GNU
+General Public License</a></li>
+  <li>Il&nbsp;est
+&eacute;crit en C (bien qu'&eacute;crit au d&eacute;part en
+C++, comme en t&eacute;moigne le d&eacute;p&ocirc;t
+subversion) et poss&egrave;de une interface en ligne
+de
+commande,</li>
+  <li>Il impl&eacute;mente le
+calcul de la distance d'un noeud &agrave; tous les autres
+(exercice 1).</li>
+  <li>Il fournit en sortie des
+donn&eacute;es permettant de tracer la
+distribution des distance &agrave; un noeud donn&eacute;
+(exercice 2)</li>
+  <li>Il fournit en sortie les
+donn&eacute;es permettant de tracer
+l'&eacute;volution de l'estimation de la distance moyenne en
+fonction
+du nombre de parcours effectu&eacute;s.
+(exercice 3)</li>
+  <li>Il impl&eacute;mente le
+calcul de la borne inf&eacute;rieure du
+diam&egrave;tre, en prenant la distance maximale d'un noeud
+donn&eacute; &agrave; tous les autres (exercice 4).</li>
+  <li>Il impl&eacute;mente le
+calcul de la borne sup&eacute;rieure du diam&egrave;tre, en
+prenant la
+distance maximale dans l'arbre du parcours en largeur (exercice
+5).&nbsp;</li>
+  <li>Il fournit en sortie des
+donn&eacute;es permettant de tracer les
+courbes des meilleurs bornes inf&eacute;rieures et
+sup&eacute;rieure en
+fonction du nombre de parcours effectu&eacute;s.
+(exercice 6 - d&eacute;fi).</li>
+</ul>
+<h3>1.1.
+Auteurs</h3>
+<p>Alob&eacute; a
+&eacute;t&eacute; enti&egrave;rement
+r&eacute;alis&eacute; par Glenn ROLLAND &lt;<a
+ href="mailto:glenux@fr.st">glenux@fr.st</a>&gt;
+&agrave; l'occasion de travaux pratiques du cours de <span
+ style="font-style: italic;">Grand R&eacute;seaux</span>
+du Master 2 Ing&eacute;nierie Informatique
+-
+Syst&egrave;mes, R&eacute;seaux et Internet.</p>
+<h2><a99 name="2._Pr&eacute;-requis">2.
+Pr&eacute;-requis</a99></h2>
+<p>Alob&eacute;
+ne&nbsp;n&eacute;cessite pas de biblioth&egrave;ques de
+fonctions
+particuli&egrave;res pour fonctionnner.</p>
+<h2>3.
+Se procurer Alob&eacute;</h2>
+Vous
+pouvez t&eacute;l&eacute;charger la derni&egrave;re archive
+des
+sources, ou bien directement la version la plus r&eacute;cente du
+projet sur le d&eacute;p&ocirc;t Subversion du projet.<br>
+<h3>3.1. L'archive des sources</h3>
+Elle est disponible &agrave; l'adresse : <br>
+<a href="http://glenux2.free.fr/pub/projets/Alobe/archives/">http://glenux2.free.fr/pub/projets/Alobe/archives/</a><br>
+<h3>3.2. Le
+d&eacute;p&ocirc;t Subversion</h3>
+<p>Afin d'obtenir les sources les
+plus &agrave; jour, vous pouvez utiliser le logiciel de
+contr&ocirc;le de sources Subversion </p>
+<p class="code">$ svn
+checkout http://repository.glenux.ath.cx/svn/Cours/M2/Grand_Reseaux/TP1/</p>
+<p>Il n'y a pas de mot de passe,
+il suffit donc de presser la touche
+"Entr&eacute;e" pour l'utilisateur "anonymous", si ce dernier vous
+est
+demand&eacute;.</p>
+<h2><a name="4._Utiliser_Alob&eacute;"></a>4.
+Utiliser Alob&eacute;</h2>
+<h3><a name="4.1._Compilation"></a>4.1.
+Compilation</h3>
+<p>Commencez par
+d&eacute;compressez l'archive.</p>
+<p class="code">$ tar -xzvf
+alobe-0.2.tar.gz</p>
+<p>Rendez vous ensuite dans le
+dossier qui vient d'&ecirc;tre cr&eacute;&eacute; lors de
+la d&eacute;compression.</p>
+<p class="code">$ cd
+alobe-0.2</p>
+<p>Puis lancez
+l'auto-configuration du logiciel, puis la compilation.</p>
+<p class="code">$ ./autogen<br>
+$ ./configure<br>
+$ make</p>
+<p>Le binaire produits se trouve
+dans le dossier :</p>
+<ul>
+  <li>&nbsp;<span class="code">src/alobe</span></li>
+</ul>
+<h3><a name="4.2._Utilisation"></a>4.2.
+Utilisation</h3>
+<div style="text-align: justify;">Les
+binaires de Alob&eacute; doivent &ecirc;tre appel&eacute;s
+avec la syntaxe suivante:<br>
+</div>
+<p class="code">Usage:
+alobe &lt;commande&gt; &lt;parametres_obligatoires&gt;
+[options]<br>
+</p>
+<p>Les commandes&nbsp;sont
+les suivants:</p>
+<dl>
+  <dt>-I, --tp2distance</dt>
+  <dd>Calcule les distances
+&agrave; partir du noeud donn&eacute;.</dd>
+  <dt> -J, --tp2distanceplot </dt>
+  <dd>Donne la distribution des
+distances &agrave; partir du noeud donn&eacute;.</dd>
+  <dt>-L, --tp2distevolution</dt>
+  <dd>Donne l'&eacute;volution
+de l'estimation de la distance moyenne.pour un noeud donn&eacute;,
+ou au hasard, en fonction du nombre d'it&eacute;rations.</dd>
+  <dt>-M, --tp2limitinf</dt>
+  <dd>Calcule la borne
+inf&eacute;rieure du diam&egrave;tre pour un noeud
+donn&eacute; ou au hasard, en fonction du nombre
+d'it&eacute;rations.</dd>
+  <dt>-N, --tp2limitsup</dt>
+  <dd>Calcule la borne
+sup&eacute;rieure du diam&egrave;tre pour un noeud
+donn&eacute; ou au hasard, en fonction du nombre
+d'it&eacute;rations.</dd>
+  <dt>-O, --tp2defi</dt>
+  <dd>Fournit les
+donn&eacute;es permettant de tracer les courbes de meilleures
+bornes inf&eacute;rieures et sup&eacute;rieures du
+diam&egrave;tre en fonction du nombre d'it&eacute;ration.</dd>
+</dl>
+<ul>
+</ul>
+<p>Les param&egrave;tres
+obligatoires sont les suivants:</p>
+<dl>
+  <dt>-c, --count
+&lt;entier&gt; <fichier> </fichier></dt>
+  <dd>Nombre de noeuds du fichier
+d'entr&eacute;e.</dd>
+</dl>
+<p>Les parames optionnels sont les
+suivants:</p>
+<dl>
+  <dt>-i, --input
+&lt;fichier&gt;</dt>
+  <dd> Le fichier
+d'entr&eacute;e, "-" d&eacute;signant l'entr&eacute;e
+standard,</dd>
+  <dt>-o, --output
+&lt;fichier&gt;</dt>
+  <dd>Le fichier de sorftie, "-"
+d&eacute;signant la sortie standard.</dd>
+  <dt>-v, --verbose</dt>
+  <dd> Passe l'affichage en mode
+verbeux.e
+num&eacute;ro du noeud &agrave; lire et afficher &agrave;
+partir du
+fichier
+compress&eacute;</dd>
+  <dt>-r, --root
+&lt;entier&gt;</dt>
+  <dd>Noeur servant de racine
+&agrave; la premi&egrave;re it&eacute;ration.</dd>
+  <dt>-n, --iterations
+&lt;entier&gt;</dt>
+  <dd>Nombre
+d'it&eacute;rations a effectuer.</dd>
+</dl>
+<h2><a name="5._Documentation"></a>5.
+Documentation</h2>
+<h3>5.1. Code</h3>
+<p>Vous pouvez trouver la
+documentation de Alob&eacute; dans le dossier <span class="code">doc/html</span>
+de l'application, ou en suivant <a href="html/index.html">ce lien</a>.</p>
+<h3>5.2. Remarques sur les
+diff&eacute;rents exercices</h3>
+<h4>5.2.1. Exercice 1</h4>
+<p>On calcule la distance d'un
+noeud (le 24 par exemple) &agrave; tous les autres, ainsi que la
+moyenne de toutes ses distances, par la commande suivante:</p>
+<p class="code">&nbsp;./alobe
+-I -i&nbsp;web.data.gz -o result.txt -c 701654 -r 24</p>
+<p class="">Ce qui produit
+le fichier result.txt suivant :</p>
+<p class="code">Maximum
+distance : 1<br>
+Average distance : 0.666667</p>
+<h4>5.2.2. Exercice 2</h4>
+<p>On obtient la distribution des
+distances pour un noeud donn&eacute; (le 24 par exemple) de la
+fa&ccedil;on suivante:</p>
+<p class="code">$ ./alobe
+-J -i&nbsp;web.data.gz -o result.txt -c 701654 -r 24<br>
+</p>
+<p class="">Ce qui
+produit en sortie</p>
+<p class="code">0 1<br>
+1 336<br>
+2 3017<br>
+3 21100<br>
+4 89398<br>
+5 146225<br>
+6 145567<br>
+7 118491<br>
+8 77830<br>
+9 47189<br>
+10 21247<br>
+11 8628<br>
+12 1550<br>
+13 532<br>
+14 112<br>
+15 7<br>
+16 4</p>
+<p class="">Soit le
+graphique suivant :<br>
+<img src="exercice2.png" alt="exercice 2 plot"></p>
+<h4>5.2.3. Exercice 3</h4>
+<p>On trace l'&eacute;volution
+de l'estimation de la distance moyenne (en fonction du nombre
+d'it&eacute;ration) par la commande suivante:</p>
+<p class="code">&nbsp;./alobe
+-L -i&nbsp;web.data.gz -o result.txt -c 701654 -n 100 -r 24<br>
+</p>
+<p class="">Ce qui produit
+en sortie:&nbsp;</p>
+<p class="code">0 6.228710<br>
+1 7.560919<br>
+2 9.514071<br>
+3 9.537433<br>
+4 9.504442<br>
+5 9.567365<br>
+6 9.542382<br>
+7 9.429151<br>
+8 9.426282<br>
+9 9.566440<br>
+10 9.583777<br>
+11 9.450484<br>
+12 9.548250<br>
+13 9.503499<br>
+14 9.508191<br>
+15 9.475249<br>
+16 9.297400<br>
+17 9.210398<br>
+[...]</p>
+<p>Soit sous forme graphique
+:<br>
+<img src="exercice3.png" alt="exo 3 plot"></p>
+<br>
+<h4>5.2.4. Exercice 4</h4>
+<p>Pour calculer la borne
+inf&eacute;rieure, on fera:</p>
+<p class="code">./alobe -M
+-i&nbsp;web.data.gz -o result.txt -c 701654 -n 5 -r 24</p>
+<p class="code">Iteration 0
+-- choosing root 24<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+-- borne inf&eacute;rieure 17<br>
+Iteration 1 -- choosing root 60401<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+-- borne inf&eacute;rieure 18<br>
+Iteration 2 -- choosing root 700018<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+-- borne inf&eacute;rieure 24<br>
+Iteration 3 -- choosing root 77852<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+-- borne inf&eacute;rieure 24<br>
+Iteration 4 -- choosing root 45944<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+-- borne inf&eacute;rieure 24<br>
+</p>
+<br>
+<h4>5.2.5. Exercice 5</h4>
+<p>Pour le calcul de la borne
+sup&eacute;rieure, on fait :</p>
+<p class="code">./alobe -N
+-i ~/web.data.gz -o result.txt -c 701654 -n 10 -r 24</p>
+<p class="code">Iteration 0
+-- choosing root 24<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+-- borne sup&eacute;rieure 33<br>
+Iteration 1 -- choosing root 96542<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+-- borne sup&eacute;rieure 33<br>
+Iteration 2 -- choosing root 49208<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+-- borne sup&eacute;rieure 33<br>
+Iteration 3 -- choosing root 436498<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+-- borne sup&eacute;rieure 33<br>
+Iteration 4 -- choosing root 309990<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+-- borne sup&eacute;rieure 32<br>
+Iteration 5 -- choosing root 538890<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+-- borne sup&eacute;rieure 32<br>
+Iteration 6 -- choosing root 266656<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+-- borne sup&eacute;rieure 32<br>
+Iteration 7 -- choosing root 529998<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+-- borne sup&eacute;rieure 32<br>
+Iteration 8 -- choosing root 140145<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+-- borne sup&eacute;rieure 32<br>
+Iteration 9 -- choosing root 640316<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+-- borne sup&eacute;rieure 32<br>
+<br>
+</p>
+<h4>5.2.6. Exercice 6 - D&eacute;fi</h4>
+<p>Le cumul des courbes
+pr&eacute;c&eacute;dentes&nbsp;se fait par :</p>
+<p class="code">$ ./alobe
+-O -i&nbsp;web.data.gz -o result.txt -c 701654 -n 100 -r 24</p>
+<p>Puis :</p>
+<p class="code">$
+./defiplot.sh result.txt</p>
+<p class="">Pour obtenir :
+<img src="defi.png" alt="defi plot"></p>
+<p class="">Remarque:
+pour le d&eacute;fi, il aurait fallu en plus utiliser une
+heuristique de choix des noeuds permettant de faire converger les deux
+courbes bornant le diam&egrave;tre au plus vite. Par exemple,
+choisir les noeuds par degr&eacute; d&eacute;croissant dans la
+composante connexe, en supposant qu'un noeud a fort degr&eacute;
+comme racine donne un arbre plus plat et donc la borne
+supp&eacute;rieure par la m&ecirc;me occasion...</p>
+<br>
+</div>
+</body>
+</html>

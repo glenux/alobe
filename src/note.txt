@@ -1,0 +1,7 @@
+NOTE 1:
+je pensais que l'appel de fonction/méthode causait la lenteur en C++
+cependant, en déplaçant le code appellé en lieu et place du code appelant, 
+on obtient aucun gain...
+
+NOTE 2: 
+avec le mode BIDIRECT on gagne une seconde...

@@ -1,0 +1,10 @@
+Exercice 1 : Récuperer des données pour la page:
+	http://www.liafa.jussieu.fr/~latapy/Data
+Les fichiers *.index contiennent la corerspondance entre le nom des sommets et leur numéro. Les numéros vont de 0 n-1 ou n est le nombre de sommets du graphe. Le fichier commence par une ligne donnant n.
+Les fichiers *.data contiennent une description du graphe sous la forme de lignes x y qui signifient qu'il existe un lien entre le sommet numéro x et le sommet numéro y. Il n'y a pas de dupliocation de lignes (autrement dit, chaque lien n'apparait qu'une fois).
+
+------
+Défi 1
+
+prieur@liafa.jussieu.fr
+

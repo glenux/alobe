@@ -1,0 +1,357 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html lang="fr-fr">
+<head>
+  <meta content="text/html;charset=ISO-8859-1" http-equiv="Content-Type">
+  <link rel="stylesheet" type="text/css" href="index.css">
+  <title>Alob&eacute;</title>
+  <meta content="Glenn ROLLAND" name="author">
+</head>
+<body style="direction: ltr;">
+<div style="text-align: justify;" class="page">
+<h1>Alob&eacute;</h1>
+<h2><a name="1._Description"></a>1.
+<a name="Description"></a>Description</h2>
+<p>Alob&eacute; est
+un&nbsp;logiciel libres permettant de manipuler de grands graphes
+non-orient&eacute;s d&eacute;crits par la liste de leurs
+arr&ecirc;tes. Il poss&egrave;de les
+caract&eacute;ristiques
+suivantes :</p>
+<ul>
+  <li>Il est distribu&eacute;
+sous la licence&nbsp;<a href="http://www.gnu.org/copyleft/gpl.html">GNU
+General Public License</a></li>
+  <li>Il&nbsp;est
+&eacute;crit en C (bien qu'&eacute;crit au d&eacute;part en
+C++, comme en t&eacute;moigne le d&eacute;p&ocirc;t
+subversion) et poss&egrave;de une interface en ligne
+de
+commande,</li>
+  <li>Il impl&eacute;mente le
+filtrage du graphe pour l'extraction d'un&nbsp;sous-ensemble
+(exercice 2).</li>
+  <li>Il impl&eacute;mente le
+calcul des degr&eacute;s (exercice 3)</li>
+  <li>Il impl&eacute;mente les
+statistiques sur le calcul des degr&eacute;s (degr&eacute;
+moyen, degr&eacute; maximum, densit&eacute; du graphe)
+(exercice 5)</li>
+  <li>Il impl&eacute;mente le
+stockage des donn&eacute;es de fa&ccedil;on contig&uuml;e
+en m&eacute;moire (en un unique tableau) (exercice 4).</li>
+  <li>Il impl&eacute;mente le
+calcul des composantes connexes de fa&ccedil;on efficace (exercice
+5).&nbsp;</li>
+  <li>Il impl&eacute;mente une
+m&eacute;thode de calcul alternatif des composantes connexes
+(exercice 6 - d&eacute;fi).</li>
+</ul>
+<h3>1.1.
+Auteurs</h3>
+<p>Alob&eacute; a
+&eacute;t&eacute; enti&egrave;rement
+r&eacute;alis&eacute; par Glenn ROLLAND &lt;<a
+ href="mailto:glenux@fr.st">glenux@fr.st</a>&gt;
+&agrave; l'occasion de travaux pratiques du cours de <span
+ style="font-style: italic;">Grand R&eacute;seaux</span>
+du Master 2 Ing&eacute;nierie Informatique
+-
+Syst&egrave;mes, R&eacute;seaux et Internet.</p>
+<h2><a99 name="2._Pr&eacute;-requis">2.
+Pr&eacute;-requis</a99></h2>
+<p>Alob&eacute;
+ne&nbsp;n&eacute;cessite pas de biblioth&egrave;ques de
+fonctions
+particuli&egrave;res pour fonctionnner.</p>
+<h2>3.
+Se procurer Alob&eacute;</h2>
+Vous
+pouvez t&eacute;l&eacute;charger la derni&egrave;re archive
+des
+sources, ou bien directement la version la plus r&eacute;cente du
+projet sur le d&eacute;p&ocirc;t Subversion du projet.<br>
+<h3>3.1. L'archive des sources</h3>
+Elle est disponible &agrave; l'adresse : <br>
+<a href="http://glenux2.free.fr/pub/projets/Alobe/archives/">http://glenux2.free.fr/pub/projets/Alobe/archives/</a><br>
+<h3>3.2. Le
+d&eacute;p&ocirc;t Subversion</h3>
+<p>Afin d'obtenir les sources les
+plus &agrave; jour, vous pouvez utiliser le logiciel de
+contr&ocirc;le de sources Subversion </p>
+<p class="code">$ svn
+checkout http://repository.glenux.ath.cx/svn/Cours/M2/Grand_Reseaux/TP1/</p>
+<p>Il n'y a pas de mot de passe,
+il suffit donc de presser la touche
+"Entr&eacute;e" pour l'utilisateur "anonymous", si ce dernier vous
+est
+demand&eacute;.</p>
+<h2><a name="4._Utiliser_Alob&eacute;"></a>4.
+Utiliser Alob&eacute;</h2>
+<h3><a name="4.1._Compilation"></a>4.1.
+Compilation</h3>
+<p>Commencez par
+d&eacute;compressez l'archive.</p>
+<p class="code">$ tar -xzvf
+alobe-0.1.tar.gz</p>
+<p>Rendez vous ensuite dans le
+dossier qui vient d'&ecirc;tre cr&eacute;&eacute; lors de
+la d&eacute;compression.</p>
+<p class="code">$ cd
+alobe-0.1</p>
+<p>Puis lancez
+l'auto-configuration du logiciel, puis la compilation.</p>
+<p class="code">$ ./autogen<br>
+$ ./configure<br>
+$ make</p>
+<p>Le binaire produits se trouve
+dans le dossier :</p>
+<ul>
+  <li>&nbsp;<span class="code">src/alobe</span></li>
+</ul>
+<h3><a name="4.2._Utilisation"></a>4.2.
+Utilisation</h3>
+<div style="text-align: justify;">Les
+binaires de Alob&eacute; doivent &ecirc;tre appel&eacute;s
+avec la syntaxe suivante:<br>
+</div>
+<p class="code">Usage:
+alobe &lt;commande&gt; &lt;parametres_obligatoires&gt;
+[options]<br>
+</p>
+<p>Les commandes&nbsp;sont
+les suivants:</p>
+<dl>
+  <dt>-F, --filter</dt>
+  <dd>Filtrage du fichier
+d'entr&eacute;e pour extraire un sous-graphe.</dd>
+  <dt> -D, --degree </dt>
+  <dd>Calcul du degr&eacute;
+des noeuds du graphe pris en entr&eacute;e.</dd>
+  <dt>-S, --store</dt>
+  <dd>Stockage et remplissage du
+tableau repr&eacute;sentant le graphe en m&eacute;moire.</dd>
+  <dt>-A, --average</dt>
+  <dd>Calcul des statistiques sur
+les noeuds du graphe d'entr&eacute;e (degr&eacute; moyen,
+degr&eacute; max, densit&eacute;).</dd>
+  <dt>-C, --connexity</dt>
+  <dd>Calcul des composantes
+connexes par la m&eacute;thode du tableau unique.</dd>
+  <dt>-E, --defi</dt>
+  <dd>Calcul des composantes
+connexes par ensembles d'intervalles de noeuds.</dd>
+</dl>
+<ul>
+</ul>
+<p>Les param&egrave;tres
+obligatoires sont les suivants:</p>
+<dl>
+  <dt>-c, --count &lt;entier&gt; <fichier>
+    </fichier></dt>
+  <dd>Nombre de noeuds du fichier d'entr&eacute;e.</dd>
+  <dt>-s, --size &lt;entier&gt;</dt>
+  <dd>Taille du filtre</dd>
+  <dt>-t, --offset &lt;entier&gt;</dt>
+  <dd>Offset du filtre</dd>
+</dl>
+<p>Les parames optionnels sont les
+suivants:</p>
+<dl>
+  <dt>-i, --input
+&lt;fichier&gt;</dt>
+  <dd> Le fichier
+d'entr&eacute;e, "-" d&eacute;signant l'entr&eacute;e
+standard,</dd>
+  <dt>-o, --output
+&lt;fichier&gt;</dt>
+  <dd>Le fichier de sorftie, "-"
+d&eacute;signant la sortie standard.</dd>
+  <dt>-v, --verbose</dt>
+  <dd> Passe l'affichage en mode
+verbeux.e
+num&eacute;ro du noeud &agrave; lire et afficher &agrave; partir du
+fichier
+compress&eacute;</dd>
+</dl>
+<h2><a name="5._Documentation"></a>5.
+Documentation</h2>
+<h3>5.1. Code</h3>
+<p>Vous pouvez trouver la
+documentation de Alob&eacute; dans le dossier <span class="code">doc/html</span>
+de l'application, ou en suivant <a href="html/index.html">ce lien</a>.</p>
+<h3>5.2. Remarques sur les
+diff&eacute;rents exercices</h3>
+<h4>5.2.1. Exercice 1</h4>
+<br>
+<h4>5.2.2. Exercice 2</h4>
+<p>Il est possible de filtrer le
+graphe d'entr&eacute;e pour extraire un sous ensemble de noeuds de
+la fa&ccedil;on suivante :</p>
+<p class="code">./src/alobe -F -t 0 -s 60 -i ../web.data.gz -c 701654</p>
+<p class="">Ce qui
+produit en sortie</p>
+<p class="code">Command -&gt; FILTER<br>
+Offset -&gt; 0<br>
+Size -&gt; 30<br>
+Input Data -&gt; ../web.data.gz<br>
+Input Index -&gt; 701654<br>
+Filtering between [ 0 .. 30 ]...<br>
+0 1<br>
+0 2<br>
+1 3<br>
+1 4<br>
+1 5<br>
+1 6<br>
+1 7<br>
+1 8<br>
+1 9<br>
+1 10<br>
+1 11<br>
+1 12<br>
+<br>
+[...]<br>
+<br>
+( uniquement les noeuds x compris entre 0 &lt;= x &lt; 30 )</p>
+<h4>5.2.3. Exercice 3</h4>
+<p>Le calcul du degr&eacute; des noeuds se fait par la commande
+suivante :</p>
+<p class="code">./src/alobe -D&nbsp;-i ../web.data.gz -c 701654</p>
+<p class="">Ce qui produit (en premi&egrave;re colone l'index du noeud
+et en seconde le degr&eacute;):</p>
+<p class="code">Command -&gt; DEGREE<br>
+Input Data -&gt; ../web.data.gz<br>
+Input Index -&gt; 701654<br>
+Computing degree of each node...<br>
+done<br>
+0 2<br>
+1 1194<br>
+2 77<br>
+3 496<br>
+4 227<br>
+5 339<br>
+6 337<br>
+7 340<br>
+8 337<br>
+9 10<br>
+10 16<br>
+11 31<br>
+12 15<br>
+13 22<br>
+<br>
+[...]</p>
+<p class="">Le calcul du degr&eacute; est effectu&eacute; dans un
+tableau de <span style="font-weight: bold;">sizeof(long) * N</span>
+(o&ugrave; N est le nombre de noeuds), initialis&eacute; &agrave;
+z&eacute;ro, et o&ugrave; les valeurs des cases sont
+incr&eacute;ment&eacute;es &agrave; la lecture des arcs.<br>
+</p>
+<h4>5.2.4. Exercice 4</h4>
+<p>Le simple stockage du graphe en m&eacute;moire ne produit pas de
+sortie visible, mais s'execute en tapant :</p>
+<p class="code">./src/alobe&nbsp;-S -i ../web.data.gz -c 701654</p>
+Le programme commence par calculer les degr&eacute;s, puis initialise
+un tableau de taille N (N = nombre de noeuds) pointeurs vers les cases
+d'un tableau de taille <span style="font-weight: bold;">(M + 3) *
+sizeof(long)</span> (o&ugrave; M est la somme des degr&eacute;s des
+noeuds) destin&eacute; &agrave; contenir les arcs de chaque noeud. Les
+3 cases suppl&eacute;mentaires ne servent qu'au calcul des composates
+connexes et seront d&eacute;crites plus loin.<br>
+<h4>5.2.5. Exercice 5</h4>
+<p>Le calcul des statistiques sur les noeuds du graphe se fait de la
+fa&ccedil;on suivante:</p>
+<p class="code">./src/alobe&nbsp;-A -i ../web.data.gz -c 701654</p>
+<p class="code">Command -&gt; AVERAGE<br>
+Input Data -&gt; ../web.data.gz<br>
+Input Index -&gt; 701654<br>
+Computing degree of each node...<br>
+done<br>
+Degree average: 5.517015<br>
+Degree maximum: 5331<br>
+Density : 0.000000<br>
+</p>
+<p class="">Cet exercice r&eacute;utilise la structure de
+donn&eacute;es l'&eacute;xercice 3, et en la parcourant effectue le
+calcul.</p>
+<h4>5.2.6. Exercice 6</h4>
+<p>Le calcul des composantes connexes se fait de la fa&ccedil;on
+suivante :</p>
+<p class="code">./src/alobe&nbsp;-C -i ../web.data.gz -c 701654</p>
+<p class="code">Command -&gt; CONNEXITY<br>
+Input Data -&gt; ../web.data.gz<br>
+Input Index -&gt; 701654<br>
+Computing degree of each node...<br>
+done<br>
+Filling the Big Table...<br>
+done<br>
+Found connex component at 0<br>
+Found connex component at 9484<br>
+Found connex component at 15516<br>
+Found connex component at 17477<br>
+Found connex component at 20073<br>
+Found connex component at 20100<br>
+<br>
+[...]<br>
+<br>
+Found connex component at 699413<br>
+Found connex component at 700568<br>
+Found connex component at 701306<br>
+Found connex component at 701313<br>
+Found 970 connex components</p>
+<p class="">Pour le fichier <span style="font-weight: bold;">IP.data.gz</span>
+on obtient :</p>
+<p class="code">Command -&gt; CONNEXITY<br>
+Input Data -&gt; /home/warbrain/Films/IP.data.gz<br>
+Input Index -&gt; 467273<br>
+Computing degree of each node...<br>
+done<br>
+Filling the Big Table...<br>
+done<br>
+Found connex component at 0<br>
+Found connex component at 324896<br>
+Found 2 connex components</p>
+<p class="">Et pour le fichier <span style="font-weight: bold;">P2P.data.gz</span>
+les machines &agrave; ma disposition ne poss&eacute;daient pas
+suffisament de m&eacute;moire...</p>
+<p class="">Le calcul des composantes connexes utilise le m&ecirc;me
+tableau que l'exercice 4. Le calcul se fait dans les 3 cases
+suppl&eacute;mentaires :<br>
+</p>
+<ul>
+  <li>une case pour le degr&eacute; du noeud</li>
+  <li>une case pour l'offset du noeud trait&eacute;</li>
+  <li>une case pour le noeud "p&egrave;re" dans le parcours en
+profondeur.</li>
+</ul>
+<p class="">Lorsqu'on parcours un noeud x en provenance de y, on
+inscrit la r&eacute;f&eacute;rence du noeud p&egrave;re dans la case 3,
+puis pour&nbsp;chaque noeud adjacent non visit&eacute;, on indique le
+noeud adjacent parcouru actuellement puis on parcourt
+r&eacute;cursivement le noeud adjacent.</p>
+<p class="">Remarque: jusque l&agrave; le TP &eacute;tait
+programm&eacute; en C++, et pour un &eacute;venteuel gain de
+performances il fut r&eacute;&eacute;crit enti&egrave;rement (en
+conservant les structures de donn&eacute;es) en C. Cependant seules 0.3
+secondes furent gagn&eacute;es sur le graphe <span
+ style="font-weight: bold;">web.data.gz</span>... sur un temps de
+calcul total de 14 sec... (sur un iBook G4 1Ghz avec 256 Mo de RAM sous
+GNU/Linux).</p>
+<h4>5.2.7. D&eacute;fi</h4>
+<p class="">On suppose que dans le graphe du web, les noeud adjacents
+ont de fortes chances d'appartenir &agrave; la m&ecirc;me composante
+connexe.&nbsp;<br>
+Ainsi, pour d&eacute;crire en m&eacute;moire une composante regroupant
+les noeuds <span style="font-weight: bold;">{0, 1, 2 ,3 ,4, 5, 6, 7,
+8, 9, 10, 14,15,16, 17, 19, 20}</span> null besoin de stocker en
+m&eacute;moire autre chose que les ensembles d'intervalles suivants: <span
+ style="font-weight: bold;">[0 .. 10] U [14 .. 17] U [19 .. 20] </span>...</p>
+<p class="">Cependant, les fusions d'ensembles n&eacute;cessitent de
+nombreuses recopies de donn&eacute;es&nbsp;et d'allocations de
+m&eacute;moire. L'algorithme s'en trouve par cons&eacute;quent fort
+ralenti...</p>
+<p class="">On peut lancer le d&eacute;fi en tapant :</p>
+<p class="code">./src/alobe&nbsp;-E -i ../web.data.gz -c 701654</p>
+<p class="">..et admirer les r&eacute;sultats (s'il apparaissent, car
+il y a encore pas mal de soucis de pointeurs se baladant librement...)</p>
+</div>
+</body>
+</html>

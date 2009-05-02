@@ -1,0 +1,218 @@
+dnl Copyright (C) 2004-2005 Glenn ROLLAND.
+dnl
+dnl This program is free software; you can redistribute it and/or modify
+dnl it under the terms of the GNU General Public License as published by
+dnl the Free Software Foundation; either version 2 of the License, or
+dnl (at your option) any later version.
+dnl 
+dnl This program is distributed in the hope that it will be useful,
+dnl but WITHOUT ANY WARRANTY; without even the implied warranty of
+dnl MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+dnl GNU General Public License for more details.
+dnl 
+dnl You should have received a copy of the GNU General Public License
+dnl along with this program; if not, write to the Free Software 
+dnl Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
+dnl 
+
+## Autoconf requirements
+AC_INIT([alobe], [0.0.2], [glenux@fr.st])
+AC_PREREQ(2.50)
+
+AC_CANONICAL_HOST
+AC_CANONICAL_TARGET
+
+
+AM_INIT_AUTOMAKE([alobe],[0.0.2])
+
+#AC_CANONICAL_SYSTEM
+
+
+
+AM_CONFIG_HEADER(config.h)
+AC_CONFIG_SRCDIR([src/alobe.h])
+AC_PROG_INSTALL
+
+## information on the package
+## ## checks for programs
+## checks for libraries
+## checks for header files
+## checks for types
+## checks for structures
+## checks for compiler characteristics
+## checks for library functions
+## checks for system services
+
+#AM_CONFIG_HEADER(config.h)
+## required for c sources
+
+AC_ISC_POSIX
+AC_PROG_CC
+## required for c++ sources
+AC_PROG_CXX
+AC_PROG_CPP
+# AC_PROG_RANLIB obsoleted bu LIBTOOL
+
+AC_LANG_SAVE
+AC_LANG_CPLUSPLUS
+
+# AC_PROG_YACC
+# AC_PROG_LEX
+# AM_PROG_LEX
+ 
+dnl Checks for library functions.
+AC_HEADER_STDC([])
+
+#TODO: uncomment
+#AC_CHECK_HEADERS([iostream string list iterator exception],,
+#  AC_MSG_ERROR([You need to have the libstdc++ headers installed]))
+
+dnl ***************************************************************************
+dnl Gettext stuff.
+dnl ***************************************************************************
+
+#GETTEXT_PACKAGE=yalag-0.1
+#AC_SUBST(GETTEXT_PACKAGE)
+#AC_DEFINE_UNQUOTED(GETTEXT_PACKAGE,"$GETTEXT_PACKAGE", [Gettext package.])
+
+#ALL_LINGUAS="fr"
+#AM_GLIB_GNU_GETTEXT
+
+
+dnl Check for programs
+
+dnl Check for build configuration.
+#AC_PROG_INTLTOOL
+
+AM_PROG_LIBTOOL
+
+dnl Checks for header files.
+
+#AC_MSG_NOTICE([checking presence of SQLite])
+#AC_CHECK_HEADERS([sqlite.h],[],
+#	[
+#	AC_MSG_NOTICE([*** Please install/upgrade SQLite before proceeding])
+#	AC_MSG_NOTICE([*** with Unlost Memories installation.])
+#	AC_MSG_ERROR([cannot find sqlite.h])
+#	])
+	
+#sqlite_deps="sqlite3 >= 3.0"
+#PKG_CHECK_MODULES(SQLITE3,$sqlite_deps,build_sqlite=yes,build_sqlite=no)
+#AC_SUBST(SQLITE3_CFLAGS)
+#AC_SUBST(SQLITE3_LIBS)
+
+#glib_deps="glib-2.0 >= 2.0"
+#PKG_CHECK_MODULES(GLIB2,$glib_deps,	build_glib=yes, build_glib=no)
+#AC_SUBST(GLIB2_CFLAGS)
+#AC_SUBST(GLIB2_LIBS)
+
+#xsock_deps="xsock >= 0.8"
+#PKG_CHECK_MODULES(XSOCK,$xsock_deps,	build_xsock=yes, build_xsock=no)
+#AC_SUBST(XSOCK_CFLAGS)
+#AC_SUBST(XSOCK_LIBS)
+#if test "$build_xsock" = "no"; then
+#	AC_MSG_NOTICE([*** Please install/upgrade libxsock-dev before proceeding])
+#	AC_MSG_NOTICE([*** with installation.])
+#	AC_MSG_ERROR([cannot find xsock])
+#fi
+
+#glibmm_deps="glibmm-2.4 >= 2.4"
+#PKG_CHECK_MODULES(GLIBMM,$glibmm_deps,	build_glibmm=yes, build_glibmm=no)
+#AC_SUBST(GLIBMM_CFLAGS)
+#AC_SUBST(GLIBMM_LIBS)
+#if test "$build_glibmm" = "no"; then
+#	AC_MSG_NOTICE([*** Please install/upgrade libglibmm-2.4-dev before proceeding])
+#	AC_MSG_NOTICE([*** with Ytem installation.])
+#	AC_MSG_ERROR([cannot find glibmm-2.4])
+#fi
+
+
+#gdkmm_deps="gdkmm-2.4 >= 2.4"
+#PKG_CHECK_MODULES(GDKMM,$gdkmm_deps, build_gdkmm=yes, build_gdkmm=no)
+#AC_SUBST(GDKMM_CFLAGS)
+#AC_SUBST(GDKMM_LIBS)
+#if test "$build_gdkmm" = "no"; then
+#	AC_MSG_NOTICE([*** ])
+#	AC_MSG_NOTICE([*** Please install/upgrade libgdkmm-2.4-dev before proceeding])
+#	AC_MSG_NOTICE([*** with Ytem installation.])
+#	AC_MSG_NOTICE([*** ])
+#	AC_MSG_ERROR([cannot find gdkmm-2.4])
+#fi
+
+#gtkmm_deps="gtkmm-2.4 >= 2.4"
+#PKG_CHECK_MODULES(GTKMM,$gtkmm_deps, build_gtkmm=yes, build_gtkmm=no)
+#AC_SUBST(GTKMM_CFLAGS)
+#AC_SUBST(GTKMM_LIBS)
+#if test "$build_gtkmm" = "no"; then
+#	AC_MSG_NOTICE([*** ])
+#	AC_MSG_NOTICE([*** Please install/upgrade libgtkmm-2.4-dev before proceeding])
+#	AC_MSG_NOTICE([*** with Ytem installation.])
+#	AC_MSG_NOTICE([*** ])
+#	AC_MSG_ERROR([cannot find gtkmm-2.4])
+#fi
+
+##########
+# Figure out where to get the READLINE header files.
+#
+#AC_MSG_CHECKING([readline header files])
+#found=no
+#if test "$config_TARGET_READLINE_INC" != ""; then
+#  TARGET_READLINE_INC=$config_TARGET_READLINE_INC
+#  found=yes
+#fi
+#if test "$found" = "yes"; then
+#  AC_MSG_RESULT($TARGET_READLINE_INC)
+#else
+#  AC_MSG_RESULT(not specified: still searching...)
+#  AC_CHECK_HEADER(readline.h, [found=yes])
+#fi
+#if test "$found" = "no"; then
+#  for dir in /usr /usr/local /usr/local/readline /usr/contrib /mingw /sw; do
+#    AC_CHECK_FILE($dir/include/readline.h, found=yes)
+#    if test "$found" = "yes"; then
+#      TARGET_READLINE_INC="-I$dir/include"
+#      break
+#    fi
+#    AC_CHECK_FILE($dir/include/readline/readline.h, found=yes)
+#    if test "$found" = "yes"; then
+#      TARGET_READLINE_INC="-I$dir/include/readline"
+#      break
+#    fi
+#  done
+#fi
+#if test "$found" = "yes"; then
+#  if test "$TARGET_READLINE_LIBS" = ""; then
+#    TARGET_HAVE_READLINE=0
+#  else
+#    TARGET_HAVE_READLINE=1
+#  fi
+#else
+#  TARGET_HAVE_READLINE=0
+#fi
+#AC_SUBST(TARGET_READLINE_INC)
+#AC_SUBST(TARGET_HAVE_READLINE)
+
+#libxml2_deps="libxml-2.0 >= 2.4.1"
+#PKG_CHECK_MODULES(LIBXML2,$libxml2_deps, build_libxml2=yes, build_libxml2=no)
+#AC_SUBST(LIBXML2_CFLAGS)
+#AC_SUBST(LIBXML2_LIBS)
+
+#if test $build_libxml2 == yes ; then
+#  AC_DEFINE(HAVE_LIBXML2_H,1,[Vaut 1 lorsque l'on utilise LIBXML2.])
+#else
+#  AC_DEFINE(HAVE_LIBXML2_H,0,[Vaut 1 lorsque l'on utilise LIBXML2.])
+#fi
+
+#libxmlpp_deps="libxml++-2.6 >= 2.8"
+#PKG_CHECK_MODULES(LIBXMLPP,$libxmlpp_deps, build_libxmlpp=yes, build_libxmlpp=no)
+#AC_SUBST(LIBXMLPP_CFLAGS)
+#AC_SUBST(LIBXMLPP_LIBS)
+
+
+AC_CONFIG_FILES([
+	Makefile 
+	src/Makefile 
+	])
+AC_OUTPUT
+
+dnl configure.in ends here
