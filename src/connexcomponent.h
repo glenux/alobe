@@ -1,7 +1,7 @@
 /* vim: set sw=4 ts=4 si et: */		
 
-#ifndef _GYR_CONNEX_COMPONENT_H
-#define _GYR_CONNEX_COMPONENT_H
+#ifndef _ALOBE_CONNEX_COMPONENT_H
+#define _ALOBE_CONNEX_COMPONENT_H
 
 #include "nodeset.h"
 

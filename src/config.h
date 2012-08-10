@@ -1,7 +1,7 @@
 /* vim: set sw=4 ts=4 si et: */		
 
-#ifndef _GYR_CONFIG_H
-#define _GYR_CONFIG_H
+#ifndef _ALOBE_CONFIG_H
+#define _ALOBE_CONFIG_H
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -59,4 +59,4 @@ bool config_is_valid(Config_t * config);
 void config_usage(Config_t * config);
 void config_destroy(Config_t * config);
 
-#endif // _GYR_CONFIG_H
+#endif // _ALOBE_CONFIG_H

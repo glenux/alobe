@@ -1,5 +1,5 @@
-#ifndef _GYR_UNITS_H
-#define _GYR_UNITS_H
+#ifndef _ALOBE_UNITS_H
+#define _ALOBE_UNITS_H
 
 #define bool short
 #define true 1

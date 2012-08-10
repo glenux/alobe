@@ -1,7 +1,7 @@
 /* vim: set sw=4 ts=4 si et: */		
 
-#ifndef _GYR_CONNEXITY_H
-#define _GYR_CONNEXITY_H
+#ifndef _ALOBE_CONNEXITY_H
+#define _ALOBE_CONNEXITY_H
 
 #include <stdio.h>
 #include <stdlib.h>

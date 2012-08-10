@@ -1,7 +1,7 @@
 /* vim: set sw=4 ts=4 si et: */		
 
-#ifndef _GYR_STORE_H
-#define _GYR_STORE_H
+#ifndef _ALOBE_STORE_H
+#define _ALOBE_STORE_H
 
 #include <stdio.h>
 #include <stdlib.h>

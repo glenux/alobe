@@ -1,7 +1,7 @@
 /* vim: set sw=4 ts=4 si et: */		
 
-#ifndef _GYR_DEGREE_H
-#define _GYR_DEGREE_H
+#ifndef _ALOBE_DEGREE_H
+#define _ALOBE_DEGREE_H
 
 #include <stdio.h>
 #include <stdlib.h>
