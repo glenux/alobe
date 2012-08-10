@@ -18,3 +18,8 @@ libtool
 src/.deps/
 src/Makefile
 stamp-h1
+
+src/*\.o
+src/alobe
+src/testfifo
+src/testlist
