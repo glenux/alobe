@@ -110,9 +110,8 @@ void generator_run(Generator_t * generator){
 		for (cur = 0; cur < remaining; cur++){
 			nodeindex_t src_node;
 			nodeindex_t dst_node;
-			nodeindex_t deg;
 
-			fprintf(stderr,"\r%s Selecting degreex... (%d of %d)", 
+			fprintf(stderr,"\r%s Selecting degreex... (%ld of %ld)", 
 					progress_indicator(), 
 					cur + 1 + generator->_node_count, 
 					generator->_edge_count);
