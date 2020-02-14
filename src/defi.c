@@ -1,6 +1,8 @@
 /* vim: set sw=4 ts=4 si et: */		
 
 #include "defi.h"
+#include <string.h>
+#include <errno.h>
 
 #define DEBUG 1
 
@@ -38,6 +40,10 @@ void defi_run(Defi_t * defi){
 			break;
 		} else {
 			re = sscanf(buf, "%ld %ld", &one, &two);
+			if (re < 0) {
+			    printf("sscanf() failed: %s", strerror(errno));
+			    exit(1);
+			}
 			pDEBUG("=== DEFI READING  %ld %ld ===\n", one, two);
 			defi->_list = 
 				connexcomponentlist_insert_edge(defi->_list, one, two);
