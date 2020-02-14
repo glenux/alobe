@@ -15,7 +15,6 @@ Defi_t * defi_create(Config_io_t * io, nodeindex_t size){
 
 void defi_destroy(Defi_t * defi){
 	free (defi);
-	defi = NULL;
 }
 
 void defi_run(Defi_t * defi){
