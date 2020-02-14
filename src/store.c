@@ -15,7 +15,7 @@
 
 /**
  * Constructeur de l'objet
- * @param io Configuration des flux d'entrée/sortie
+ * @param io Configuration des flux d'entr?e/sortie
  * @param size Nombre de noeuds
  * @return Pointeur sur la structure de l'objet
  */
@@ -38,7 +38,7 @@ Store_t * store_create(Config_io_t * io, nodeindex_t size)
 
 
 /**
- * Destructeur de l'objet passé en paramètre.
+ * Destructeur de l'objet pass? en param?tre.
  * @param store Pointeur sur la structure de l'objet
  */
 
@@ -57,9 +57,9 @@ void store_set_output(Store_t * store, bool output){
 }
 
 /**
- * Ré-initilaise les données EXTRA du Store_t
+ * R?-initilaise les donn?es EXTRA du Store_t
  *
- * @param store Pointeur sur l'objet Store_t manipulé
+ * @param store Pointeur sur l'objet Store_t manipul?
  */
 
 void store_reset(Store_t * store, store_reset_t mode){
@@ -99,13 +99,13 @@ void store_reset(Store_t * store, store_reset_t mode){
 }
 
 /**
- * Génère le modèle du Store_t
+ * G?n?re le mod?le du Store_t
  *
- * Alloue la mémoire nécessaire en fonction des degrés des noeuds
- * et initialise les cases aux bonnes valeurs par défaut.
+ * Alloue la m?moire n?cessaire en fonction des degr?s des noeuds
+ * et initialise les cases aux bonnes valeurs par d?faut.
  * 
- * @param store Pointeur sur l'objet Store_t manipulé
- * @param degree Pointeur sur l'objet Degree_t fournissant les degrés.
+ * @param store Pointeur sur l'objet Store_t manipul?
+ * @param degree Pointeur sur l'objet Degree_t fournissant les degr?s.
  */
 
 void store_generate_model(Store_t * store, Degree_t * degree){
@@ -140,9 +140,9 @@ void store_generate_model(Store_t * store, Degree_t * degree){
 
 
 /**
- * Enregistre une valeur (sémantique arbitraire) dans le noeud choisi
+ * Enregistre une valeur (s?mantique arbitraire) dans le noeud choisi
  *
- * @param store 		Pointeur sur l'objet Store_t manipulé
+ * @param store 		Pointeur sur l'objet Store_t manipul?
  * @param node_index 	Index du noeud choisi dans le Store_t
  * @param value 		Valeur a enregistrer
  */
@@ -160,9 +160,9 @@ void store_set_value_2(Store_t * store, nodeindex_t node_index, nodeindex_t valu
 }
 
 /**
- * Lit la valeur (sémantique arbitraire) dans le noeud choisi
+ * Lit la valeur (s?mantique arbitraire) dans le noeud choisi
  *
- * @param store 		Pointeur sur l'objet Store_t manipulé
+ * @param store 		Pointeur sur l'objet Store_t manipul?
  * @param node_index	Index du noeud choisi dans le Store_t
  */
 
@@ -176,11 +176,11 @@ nodeindex_t store_get_value_2(Store_t * store, nodeindex_t from){
 }
 
 /** 
- * Enregistrer dans un noeud la référence à un autre noeud
+ * Enregistrer dans un noeud la r?f?rence ? un autre noeud
  *
- * @param store 		Pointeur sur l'objet Store_t manipulé
+ * @param store 		Pointeur sur l'objet Store_t manipul?
  * @param node_index	Index du noeud choisi dans le Store_t
- * @param index_value	Index du noeud référencé dans le Store_t
+ * @param index_value	Index du noeud r?f?renc? dans le Store_t
  */
 
 void store_set_ref(Store_t * store, nodeindex_t node_index, nodeindex_t index_value){
@@ -191,9 +191,9 @@ void store_set_ref(Store_t * store, nodeindex_t node_index, nodeindex_t index_va
 
 
 /**
- * Lit la référence contenue dans le noeud choisi
+ * Lit la r?f?rence contenue dans le noeud choisi
  *
- * @param store 		Pointeur sur l'objet Store_t manipulé
+ * @param store 		Pointeur sur l'objet Store_t manipul?
  * @param node_index	Index du noeud choisi dans le Store_t
  */
 
@@ -205,7 +205,7 @@ nodeindex_t store_get_ref(Store_t * store, nodeindex_t from){
 /**
  * Ajoute un arc vers un autre noeud au noeud choisi
  *
- * @param store 		Pointeur sur l'objet Store_t manipulé
+ * @param store 		Pointeur sur l'objet Store_t manipul?
  * @param from			Index du noeud choisi dans le Store_t
  * @param to			Index du noeud destination (de l'arc) dans le Store_t
  */
@@ -230,7 +230,7 @@ void store_add_adjacent(Store_t * store, nodeindex_t from, nodeindex_t to){
 
 
 /**
- * Trouve l'index du noeud cherché dans la liste d'ajacence du noeud choisi
+ * Trouve l'index du noeud cherch? dans la liste d'ajacence du noeud choisi
  */
 
 #undef DEBUG
@@ -268,7 +268,7 @@ void store_display_adjacent (Store_t * store, nodeindex_t from){
 	printf("]\n");
 }
 /**
- * Retire l'arc vers un autre noeud, à partir du noeud choisi
+ * Retire l'arc vers un autre noeud, ? partir du noeud choisi
  *
  */
 
@@ -276,12 +276,12 @@ void store_del_adjacent(Store_t * store, nodeindex_t from, nodeindex_t to){
 	nodeindex_t idx = store_find_adjacent (store, from, to);
 	
 	if (idx == NODEINDEX_UNDEF){
-		printf("Adjacent %ld non trouvé dans la liste de %ld!\n", to, from);
+		printf("Adjacent %ld non trouv? dans la liste de %ld!\n", to, from);
 		store_display_adjacent(store, from);
 		exit(-1);
 	}
 
-	// on décale tous les suivants de 1, et on décrémente le degré
+	// on d?cale tous les suivants de 1, et on d?cr?mente le degr?
 	nodeindex_t from_degree = store_get_degree (store, from);
 	nodeindex_t cur;
 	for (cur = idx; cur < (from_degree - 1); cur++){
@@ -334,9 +334,9 @@ nodeindex_t store_get_adjacent(Store_t * store, nodeindex_t from, nodeindex_t in
 
 
 /**
- * Lit le degré du noeud choisi
+ * Lit le degr? du noeud choisi
  *
- * @param store 		Pointeur sur l'objet Store_t manipulé
+ * @param store 		Pointeur sur l'objet Store_t manipul?
  * @param node_index	Index du noeud choisi dans le Store_t
  */
 
@@ -352,19 +352,20 @@ nodeindex_t store_get_degree (Store_t * store, nodeindex_t from){
  */
 
 double store_compute_avg_degree(Store_t * store, int iterations){
-	double average_sum;
-	double average_avg;
+	double average_sum = 0;
+	double average_avg = 0;
 
 	nodeindex_t cur;
-	nodeindex_t rand_node = (nodeindex_t)(random() % store->_size);
+	nodeindex_t rand_node;
 	for(cur = 0; cur < iterations; cur++){
-		nodeindex_t rand_node = (nodeindex_t)(random()) % store->_size;
+		rand_node = (nodeindex_t)(random()) % store->_size;
 		fprintf(stderr, "Selecting node %ld\n", rand_node);
 		
 		average_sum += store_get_degree(store, rand_node);
 		average_avg = average_sum / (cur + 1);
 		fprintf(store->_io->output, "%ld %lf\n", cur, average_avg);
 	}
+	return average_avg;
 }
 
 void store_init_from_degrees (Store_t * store, Degree_t * degree){
@@ -402,7 +403,7 @@ void store_fill_from_random_graph (Store_t * store, nodeindex_t edge_count){
 
 	printf("Filling random nodes %ld...\n", store->_size);
     for (cur_node = 0; cur_node < store->_size; cur_node++){
-        // on lit le degré du noeud
+        // on lit le degr? du noeud
         nodeindex_t src_deg = store_get_value(store, cur_node);
         
         while(src_deg > 0){
@@ -414,21 +415,21 @@ void store_fill_from_random_graph (Store_t * store, nodeindex_t edge_count){
                 dest_node = rand() % store->_size;
                 choix_is_bad = false;
                 
-                // on vérifie que le noeud dest est différent du noeud source
+                // on v?rifie que le noeud dest est diff?rent du noeud source
                 if (dest_node == cur_node){ choix_is_bad = true; }
                
-                // on vérifie qu'il reste des places disponibles dans le noeud
-                // visé...
+                // on v?rifie qu'il reste des places disponibles dans le noeud
+                // vis?...
                 nodeindex_t dest_remaining_deg = store_get_value(store, dest_node); 
                 if (dest_remaining_deg <= 0){ choix_is_bad = true; }
 
-                // vérifier que le noeud n'est pas _deja_ dans les adjacents...
+                // v?rifier que le noeud n'est pas _deja_ dans les adjacents...
                 nodeindex_t dest_deg = store_get_degree(store, dest_node);
 				nodeindex_t inf_deg;
 
                 for (inf_deg = 0; inf_deg < dest_deg; inf_deg++){
 					printf("Checking adjacent %ld of node %ld\n", inf_deg, dest_node);
-                    // lire les numéros des noeuds afin de vérifier
+                    // lire les num?ros des noeuds afin de v?rifier
                     // si les adjacents ne contiennent pas le noeud source
                     if (store_get_adjacent(store, dest_node, inf_deg) == cur_node){
                         choix_is_bad = true;
@@ -437,7 +438,7 @@ void store_fill_from_random_graph (Store_t * store, nodeindex_t edge_count){
                 }
             } while(choix_is_bad);
 
-            // on ajoute un lien vers le noeud à partir de ce noeud, 
+            // on ajoute un lien vers le noeud ? partir de ce noeud, 
             // puis l'inverse...
             store_add_adjacent(store, cur_node, dest_node);
 			store_add_adjacent(store, dest_node, cur_node);
@@ -446,14 +447,14 @@ void store_fill_from_random_graph (Store_t * store, nodeindex_t edge_count){
 			printf("Adding edge from %ld to %ld\n", cur_node, dest_node);
 
 			nodeindex_t dest_deg; 
-            // décrémenter le nombre de dispo sur la destination
+            // d?cr?menter le nombre de dispo sur la destination
 			dest_deg = store_get_value (store, dest_node);
 			assert(dest_deg > 0);
 			store_set_value (store, dest_node, dest_deg - 1);
 			printf("r_degree[ %ld ] => %ld = ?\n", dest_node, dest_deg - 1 );
  
 
-			// décrementer le nombre de dispo sur la source
+			// d?crementer le nombre de dispo sur la source
 			src_deg = src_deg - 1;
 			store_set_value (store, cur_node, src_deg);
         }
@@ -463,18 +464,18 @@ void store_fill_from_random_graph (Store_t * store, nodeindex_t edge_count){
 
 
 /**
- * Initialise la structure du store à partir d'une premiere
- * lecture des degrés des noeuds dans le fichier
+ * Initialise la structure du store ? partir d'une premiere
+ * lecture des degr?s des noeuds dans le fichier
  *
  * ATTENTION: modifie STORE_EXTRA_DEGREE (ok)
  * 
- * @param store 		Pointeur sur l'objet Store_t manipulé
+ * @param store 		Pointeur sur l'objet Store_t manipul?
  */
 
 void store_init_from_input_graph(Store_t * store){
-	/* on interdit de re-remplir un tableau qui aurait déja été
+	/* on interdit de re-remplir un tableau qui aurait d?ja ?t?
 	 * rempli. L'utilisateur n'avait qu'a faire attention a ses 
-	 * données... */
+	 * donn?es... */
 	assert(store->_mod_degree == STORE_MODIF_UNDEF);
 
 	Degree_t * degree = degree_create (store->_io, 
@@ -483,26 +484,26 @@ void store_init_from_input_graph(Store_t * store){
 	degree_set_output (degree, false);
 	degree_fill_from_input_graph (degree);
 
-	// on allocate la mémoire du tableau
+	// on allocate la m?moire du tableau
 	store_generate_model(store, degree);
 	degree_destroy(degree);
 }
 
 /**
- * Remplit le store à partir des informations d'adjacence contenues
+ * Remplit le store ? partir des informations d'adjacence contenues
  * dans le fichier.
  *
  * ATTENTION: modifie STORE_EXTRA_DEGREE (ok)
- * FIXME: penser a découper la premiere partie dans une fonction à part
+ * FIXME: penser a d?couper la premiere partie dans une fonction ? part
  *
- * @param store 		Pointeur sur l'objet Store_t manipulé
+ * @param store 		Pointeur sur l'objet Store_t manipul?
  */
 
 void store_fill_from_input_graph(Store_t * store){
     store_init_from_input_graph(store);
 
 	/* on interdit de remplit autre chose qu'un tableau propre
-	 * au niveau des degrés */
+	 * au niveau des degr?s */
 	assert(store->_mod_degree == STORE_MODIF_RESET);
 	
 	store->_mod_degree = STORE_MODIF_BEGIN;
@@ -547,12 +548,12 @@ void store_fill_from_input_graph(Store_t * store){
 
 
 /**
- * Indique si la visite du noeud est terminée 
+ * Indique si la visite du noeud est termin?e 
  *
  * ATTENTION: utilise STORE_EXTRA_REF (ok)
  *
- * @param store 		Pointeur sur l'objet Store_t manipulé
- * @return bool			TRUE si le noeud a été visité
+ * @param store 		Pointeur sur l'objet Store_t manipul?
+ * @return bool			TRUE si le noeud a ?t? visit?
  */
 
 bool store_is_visit_done(Store_t * store, nodeindex_t index){
@@ -564,12 +565,12 @@ bool store_is_visit_done(Store_t * store, nodeindex_t index){
 
 
 /**
- * Indique si la visite du noeud n'a pas été faite
+ * Indique si la visite du noeud n'a pas ?t? faite
  * 
  * ATTENTION: utilise STORE_EXTRA_REF (ok)
  *
- * @param store 		Pointeur sur l'objet Store_t manipulé
- * @return bool			TRUE si le noeud a été visité
+ * @param store 		Pointeur sur l'objet Store_t manipul?
+ * @return bool			TRUE si le noeud a ?t? visit?
 */
 
 bool store_is_visit_undone(Store_t * store, nodeindex_t index){
@@ -581,16 +582,16 @@ bool store_is_visit_undone(Store_t * store, nodeindex_t index){
 
 
 /**
- * Visite récursivement le noeud pour un parcours en profondeur
+ * Visite r?cursivement le noeud pour un parcours en profondeur
  * 
  * ATTENTION: utilise STORE_EXTRA_DEGREE (ok)
  * 
  * ATTENTION: utilise STORE_EXTRA_REF (ok)
  * ATTENTION: modifie STORE_EXTRA_REF (ok)
  *
- * @param store 		Pointeur sur l'objet Store_t manipulé
+ * @param store 		Pointeur sur l'objet Store_t manipul?
  * @param cur_idx		Index du noeud par lequel commencer
- * @param reference		Index du noeud père
+ * @param reference		Index du noeud p?re
  */
 
 void store_visit_node(Store_t * store, 
@@ -598,7 +599,7 @@ void store_visit_node(Store_t * store,
 		nodeindex_t reference, 
 		Fifo_t * fifo_cc )
 {
-	/* on oblige l'initialisation des degrés */
+	/* on oblige l'initialisation des degr?s */
 	assert(store->_mod_degree == STORE_MODIF_END);
 	
 	/* on oblige l'utilisateur a indiquer qu'il est entrain de faire
@@ -631,12 +632,12 @@ void store_visit_node(Store_t * store,
 
 
 /**
- * Trouve l'index du premier noeud non visité (en partant du noeud indiqué)
+ * Trouve l'index du premier noeud non visit? (en partant du noeud indiqu?)
  *
  * ATTENTION: utilise STORE_EXTRA_REF (ok)
  *
- * @param store 		Pointeur sur l'objet Store_t manipulé
- * @param index			Indique le noeud de départ dans la recherche		
+ * @param store 		Pointeur sur l'objet Store_t manipul?
+ * @param index			Indique le noeud de d?part dans la recherche		
  */
 
 nodeindex_t store_find_undone(Store_t * store, nodeindex_t index){
@@ -652,12 +653,12 @@ nodeindex_t store_find_undone(Store_t * store, nodeindex_t index){
 
 
 /**
- * Trouve les composantes connexes dans le graphe représenté par le Store_t
+ * Trouve les composantes connexes dans le graphe repr?sent? par le Store_t
  *
  * ATTENTION: modifie STORE_EXTRA_REF (ok)
  *
- * @param store 		Pointeur sur l'objet Store_t manipulé
- * @param fifo_indexes  File contenant les noeuds de référence des composantes
+ * @param store 		Pointeur sur l'objet Store_t manipul?
+ * @param fifo_indexes  File contenant les noeuds de r?f?rence des composantes
  * 						connexes
  */
 
@@ -701,29 +702,29 @@ void store_connexity(Store_t * store, Fifo_t * fifo_indexes){
 
 
 /**
- * Remplit la file passée en parametre avec les noeuds de la composante
- * connexe contenant le noeud de référence.
+ * Remplit la file pass?e en parametre avec les noeuds de la composante
+ * connexe contenant le noeud de r?f?rence.
  *
  * ATTENTION: utilise STORE_EXTRA_DEGREE (ok)
  *
  * ATTENTION: modifie STORE_EXTRA_REF (ok)
  *
- * @param store 		Pointeur sur l'objet Store_t manipulé
- * @param from			Index du noeud de référence
+ * @param store 		Pointeur sur l'objet Store_t manipul?
+ * @param from			Index du noeud de r?f?rence
  * @param fifo_cc		Pointeur sur la file a remplir
  */
 
 void store_fill_cc_from_node(Store_t * store, nodeindex_t from, Fifo_t * fifo_cc ){
-	/* on oblige a avoir défini les degrés */
+	/* on oblige a avoir d?fini les degr?s */
 	assert(store->_mod_degree == STORE_MODIF_END);
 
-	// on ré-initialise le store
+	// on r?-initialise le store
 	store_reset (store, STORE_RESET_REF);
 
 	store->_mod_ref = STORE_MODIF_BEGIN;
 
 	// on parcourt en profondeur le store a partir du noeud en question		
-	/* on cherche les noeuds visités et on les ajoute a la liste */
+	/* on cherche les noeuds visit?s et on les ajoute a la liste */
 	store_visit_node (store, from, from, fifo_cc);
 	
 	store->_mod_ref = STORE_MODIF_END;
@@ -733,20 +734,20 @@ void store_fill_cc_from_node(Store_t * store, nodeindex_t from, Fifo_t * fifo_cc
 
 
 /**
- * Trouve la composante connexe a laquelle appartient le noeud donné.
+ * Trouve la composante connexe a laquelle appartient le noeud donn?.
  *
  * ATTENTION: utilise STORE_EXTRA_REF (ok)
  *
- * @param store 		Pointeur sur l'objet Store_t manipulé
+ * @param store 		Pointeur sur l'objet Store_t manipul?
  * @param node			Noeud dont on cherche la composante connexe
- * @return L'index du noeud de référence de la composante connexe
+ * @return L'index du noeud de r?f?rence de la composante connexe
  */
 
 nodeindex_t store_find_cc_of_node(Store_t * store, nodeindex_t node){
-	/* on oblige a avoir défini les références */
+	/* on oblige a avoir d?fini les r?f?rences */
 	assert(store->_mod_ref == STORE_MODIF_END);
 
-	// on remonte de référence en référence...
+	// on remonte de r?f?rence en r?f?rence...
 	pDEBUG("find cc of node %ld\n", node);
 	while(node != store_get_ref(store, node)){
 		node = store_get_ref(store, node);	
