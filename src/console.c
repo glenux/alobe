@@ -28,7 +28,7 @@ void console_register_variable(Console_t * console,
 	if (!console_is_registered_variable(console, varname)){
 		// on crée la structure;
 		console_var_t * cell_var = 
-			(console_var_t *) malloc (sizeof(console_var_t *));
+			(console_var_t *) malloc (sizeof(console_var_t));
 
 		// remplir les champs de cell_var;
 		//cell_var->name = strndup(varname, varnamelen);
