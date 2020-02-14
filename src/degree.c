@@ -88,7 +88,7 @@ void degree_fill_from_random(Degree_t * degree, nodeindex_t edge_count){
 			nodeindex_t dst_node;
 			nodeindex_t deg;
 
-			printf("\r%s Selecting degrees... (%d of %d)", 
+			printf("\r%s Selecting degrees... (%ld of %ld)", 
 					progress_indicator(), 
 					cur+1, 
 					remaining);
