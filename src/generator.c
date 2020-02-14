@@ -88,7 +88,7 @@ void generator_run(Generator_t * generator){
 
 		for (cur = 0; cur < generator->_node_count; cur++){
 
-			fprintf(stderr,"\r%s Selecting degrees... (%d of %d)", 
+			fprintf(stderr,"\r%s Selecting degrees... (%ld of %ld)", 
 					progress_indicator(), 
 					cur + 1, 
 					generator->_edge_count);
