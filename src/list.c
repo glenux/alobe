@@ -40,9 +40,7 @@ void list_destroy(List_t * list){
 	// sans détruire les données dedans ?	
 	while(!list_is_empty(list)){
 		pDEBUG("destroying front cell\n");
-		void * data = list_pop_front(list);
-		pDEBUG("set data to NULL\n");
-		data = NULL;
+		list_pop_front(list);
 	}
 	free(list);
 }
