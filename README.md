@@ -1,6 +1,6 @@
-# README
+# Alobe
 
-Alobe is a large bidirected graph manipulation tool.
+Perform various operations on large bidirected graph.
 
 
 ## Requirements
